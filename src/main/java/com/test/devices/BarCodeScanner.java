@@ -65,4 +65,9 @@ public class BarCodeScanner implements IScanner {
     public void clearScanned() {
         shoppingCart.clear();
     }
+
+    @Override
+    public void setProductsPrices(IProductsInfoDB productsInfoDB) {
+        this.productsInfoDB = productsInfoDB;
+    }
 }
