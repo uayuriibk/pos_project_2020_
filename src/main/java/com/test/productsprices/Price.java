@@ -21,7 +21,7 @@ public class Price {
 
     public Price(BigDecimal value){
         this.value = value;
-        currency = Currency.getInstance(Locale.US);
+        this.currency = Currency.getInstance(Locale.US);
     }
 
     @Override
