@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @NoArgsConstructor
+@Getter @Setter
 public class ProductsInfoDB implements IProductsInfoDB {
 
-    @Getter @Setter
     private Map<String, Product> productsCodesMap = new HashMap<>();
 
     public ProductsInfoDB(Collection<Product> products){
