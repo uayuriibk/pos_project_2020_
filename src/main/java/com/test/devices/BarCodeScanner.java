@@ -30,15 +30,15 @@ public class BarCodeScanner implements IScanner {
 
     public BigDecimal calculateTotalPrice() {
 
-        BigDecimal totalProductsPrice = new BigDecimal(0.00);
+        BigDecimal totalPrice = new BigDecimal(0.00);
 
         for (String itemCode : shoppingCart){
-            BigDecimal productPrice = null;
-            productPrice = productsInfoDB.getPrice(itemCode).getValue();
-            totalProductsPrice = totalProductsPrice.add(productPrice);
+            BigDecimal price = null;
+            price = productsInfoDB.getPrice(itemCode).getValue();
+            totalPrice = totalPrice.add(price);
         }
 
-        return totalProductsPrice;
+        return totalPrice;
     }
 
     public Map<String, String> getReceipt() {
