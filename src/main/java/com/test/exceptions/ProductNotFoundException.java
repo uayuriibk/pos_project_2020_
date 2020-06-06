@@ -1,9 +1,9 @@
 package com.test.exceptions;
 
-public class ProductNotFoundException extends Exception {
+import lombok.NoArgsConstructor;
 
-    public ProductNotFoundException(){
-    }
+@NoArgsConstructor
+public class ProductNotFoundException extends Exception {
 
     public ProductNotFoundException(String message){
         super(message);

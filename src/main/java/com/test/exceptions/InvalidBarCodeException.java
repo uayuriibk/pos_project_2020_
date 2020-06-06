@@ -1,9 +1,9 @@
 package com.test.exceptions;
 
-public class InvalidBarCodeException extends Exception {
+import lombok.NoArgsConstructor;
 
-    public InvalidBarCodeException(){
-    }
+@NoArgsConstructor
+public class InvalidBarCodeException extends Exception {
 
     public InvalidBarCodeException(String message){
         super(message);
