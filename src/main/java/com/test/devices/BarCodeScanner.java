@@ -43,20 +43,19 @@ public class BarCodeScanner implements IScanner {
 
     public Map<String, String> getReceipt() {
         Map<String, String> resultReceipt = new HashMap<>();
-        StringBuffer receiptBuffer = new StringBuffer();
+        StringBuffer receipt = new StringBuffer();
         int itemNumber = 1;
 
         for (String itemCode : shoppingCart){
-            BigDecimal productPrice = null;
-            String productName = null;
+            BigDecimal productPrice = null; String productName = null;
             productName = productsInfoDB.getProductTitle(itemCode);
             productPrice = productsInfoDB.getPrice(itemCode).getValue();
-            receiptBuffer.append(itemNumber + "," + productName + ", price: " + productPrice + ";");
+            receipt.append(itemNumber + "," + productName + ", price: " + productPrice + ";");
             ++itemNumber;
         }
 
         BigDecimal totalProductsPrice = calculateTotalPrice();
-        resultReceipt.put("boughtProducts", receiptBuffer.toString());
+        resultReceipt.put("boughtProducts", receipt.toString());
         resultReceipt.put("totalPrice", "Total Price: " + totalProductsPrice.toString() + ";");
         clearScanned();
         return resultReceipt;
