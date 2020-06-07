@@ -9,7 +9,7 @@ public class ExitHandler extends Handler {
 
     @Override
     public void setNext(Handler nextInChain){
-        this.nextHandler = nextInChain;
+        return; //ExitHandler should be the last one without next handler
     }
 
     @Override

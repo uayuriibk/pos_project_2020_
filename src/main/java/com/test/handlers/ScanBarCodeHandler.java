@@ -7,11 +7,6 @@ import com.test.exceptions.ProductNotFoundException;
 public class ScanBarCodeHandler extends Handler {
 
     @Override
-    public void setNext(Handler nextInChain){
-        this.nextHandler = nextInChain;
-    }
-
-    @Override
     public void process(String scannedCode) {
         try {
             POS.getInstance().getScanner().scan(scannedCode);
