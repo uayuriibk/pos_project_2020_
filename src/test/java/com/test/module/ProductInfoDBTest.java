@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import java.math.BigDecimal;
 
+import static org.mockito.Matchers.booleanThat;
 import static org.mockito.Mockito.when;
 
 public class ProductInfoDBTest {
@@ -62,6 +63,20 @@ public class ProductInfoDBTest {
         BigDecimal actualSavedProductPrice = productsInfoDB.getPrice("testCode").getValue();
 
         Assert.assertEquals(expectedSavedProductPrice, actualSavedProductPrice);
+    }
+
+    @Test
+    public void testProductTitleReceiving(){
+        Product productMock = Mockito.mock(Product.class);
+        when(productMock.getCode()).thenReturn("testCode");
+        when(productMock.getTitle()).thenReturn("testTitle");
+
+        productsInfoDB.addProduct(productMock);
+
+        String expectedSavedProductTitle = "testTitle";
+        String actualSavedProductTitle = productsInfoDB.getProductTitle("testCode");
+
+        Assert.assertEquals(expectedSavedProductTitle, actualSavedProductTitle);
     }
 
 
