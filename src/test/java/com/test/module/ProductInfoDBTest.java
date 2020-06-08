@@ -79,5 +79,31 @@ public class ProductInfoDBTest {
         Assert.assertEquals(expectedSavedProductTitle, actualSavedProductTitle);
     }
 
+    @Test
+    public void testIsPresentProductInStorage(){
+        Product productMock = Mockito.mock(Product.class);
+        when(productMock.getCode()).thenReturn("testCode");
+
+        productsInfoDB.addProduct(productMock);
+
+        boolean expectedIsPresentInStorage = true;
+        boolean actualIsPresentInStorage = productsInfoDB.isPresentInStorage("testCode");
+
+        Assert.assertEquals(expectedIsPresentInStorage, actualIsPresentInStorage);
+    }
+
+    @Test
+    public void testIsNotPresentProductInStorage(){
+        Product productMock = Mockito.mock(Product.class);
+        when(productMock.getCode()).thenReturn("testCode");
+
+        productsInfoDB.addProduct(productMock);
+        productsInfoDB.deleteProduct("testCode");
+
+        boolean expectedIsPresentInStorage = false;
+        boolean actualIsPresentInStorage = productsInfoDB.isPresentInStorage("testCode");
+
+        Assert.assertEquals(expectedIsPresentInStorage, actualIsPresentInStorage);
+    }
 
 }
