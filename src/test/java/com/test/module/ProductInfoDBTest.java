@@ -1,11 +1,14 @@
 package com.test.module;
 
+import com.test.productsprices.Price;
 import com.test.productsprices.Product;
 import com.test.productsprices.ProductsInfoDB;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+
+import java.math.BigDecimal;
 
 import static org.mockito.Mockito.when;
 
@@ -42,6 +45,23 @@ public class ProductInfoDBTest {
         int actualSavedProductsCount = productsInfoDB.getProductsCodesMap().size();
 
         Assert.assertEquals(expectedSavedProductsCount, actualSavedProductsCount);
+    }
+
+    @Test
+    public void testProductPriceReceiving(){
+        Product productMock = Mockito.mock(Product.class);
+        Price priceMock = Mockito.mock(Price.class);
+
+        when(productMock.getCode()).thenReturn("testCode");
+        when(priceMock.getValue()).thenReturn(new BigDecimal(1.25));
+        when(productMock.getPrice()).thenReturn(priceMock);
+
+        productsInfoDB.addProduct(productMock);
+
+        BigDecimal expectedSavedProductPrice = new BigDecimal(1.25);
+        BigDecimal actualSavedProductPrice = productsInfoDB.getPrice("testCode").getValue();
+
+        Assert.assertEquals(expectedSavedProductPrice, actualSavedProductPrice);
     }
 
 
