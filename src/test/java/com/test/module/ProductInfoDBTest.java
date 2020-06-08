@@ -29,4 +29,20 @@ public class ProductInfoDBTest {
         int actualSavedProductsCount = productsInfoDB.getProductsCodesMap().size();
         Assert.assertEquals(expectedSavedProductsCount, actualSavedProductsCount);
     }
+
+    @Test
+    public void testProductDeleting(){
+        Product productMock = Mockito.mock(Product.class);
+        when(productMock.getCode()).thenReturn("testCode");
+
+        productsInfoDB.addProduct(productMock);
+        productsInfoDB.deleteProduct("testCode");
+
+        int expectedSavedProductsCount = 0;
+        int actualSavedProductsCount = productsInfoDB.getProductsCodesMap().size();
+
+        Assert.assertEquals(expectedSavedProductsCount, actualSavedProductsCount);
+    }
+
+
 }
