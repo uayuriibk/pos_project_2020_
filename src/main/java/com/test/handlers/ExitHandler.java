@@ -8,11 +8,6 @@ import java.util.Map;
 public class ExitHandler extends Handler {
 
     @Override
-    public void setNext(Handler nextInChain){
-        return; //ExitHandler should be the last one without next handler
-    }
-
-    @Override
     public void process(String input){
         if((StringUtils.isNotBlank(input)) && (input.equals("exit"))){
             Map<String, String> receipt = POS.getInstance().getScanner().getReceipt();
