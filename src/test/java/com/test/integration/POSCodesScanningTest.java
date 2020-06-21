@@ -4,6 +4,7 @@ import com.test.POS;
 import com.test.POSBuilder;
 import com.test.POSBuildingDirector;
 import com.test.StandartPOSBuilder;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,11 @@ public class POSCodesScanningTest {
         director.setPosBuilder(standardPointOfSale);
         director.constructPointOfSale();
         director.getPointOfSale().getScanner().setProductsPrices(DataForTestUtility.getProductsInfoDB());
+    }
+
+    @After
+    public void clearShoppingCart(){
+        POS.getInstance().getScanner().clearScanned();
     }
 
     @Test
